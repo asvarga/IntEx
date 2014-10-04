@@ -1,6 +1,4 @@
 
-// space blue: 1F282D
-
 window.onload = function() {
 	// document.body.style.background = "#FFFC7F";
 
@@ -23,28 +21,30 @@ window.onload = function() {
 	// IE.stage.mask = IE.mask;
 
 	window.onresize = function() {
+		
+		log(IE.top);
 
 		var w = window;
-	    var d = document;
-	    var e = d.documentElement;
-	    var g = d.getElementsByTagName('body')[0];
-	    var width = w.innerWidth || e.clientWidth || g.clientWidth;
-	    var height = w.innerHeight|| e.clientHeight|| g.clientHeight;
+		var d = document;
+		var e = d.documentElement;
+		var g = d.getElementsByTagName('body')[0];
+		var width = w.innerWidth || e.clientWidth || g.clientWidth;
+		var height = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
 		var size = Math.min(width, height)*0.96;
 		var chx = (width-size)/2.0;
 		var chy = (height-size)/2.0;
 
-	 	IE.canvas.style.width = width.toString()+"px";
-	    IE.canvas.style.height = height.toString()+"px";
+		IE.canvas.style.width = width.toString()+"px";
+		IE.canvas.style.height = height.toString()+"px";
 
-	    IE.canvas.width = IE.canvas.offsetWidth;
-	    IE.canvas.height = IE.canvas.offsetHeight;
+		IE.canvas.width = IE.canvas.offsetWidth;
+		IE.canvas.height = IE.canvas.offsetHeight;
 
-	    IE.size = 100;
-	    IE.top.set({x:chx, y:chy, scaleX:size/IE.size, scaleY:size/IE.size});
-	    IE.mask.set({x:chx, y:chy, scaleX:size/IE.size, scaleY:size/IE.size});
-	    IE.stage.update();
+		IE.size = 100;
+		IE.top.set({x:chx, y:chy, scaleX:size/IE.size, scaleY:size/IE.size});
+		IE.mask.set({x:chx, y:chy, scaleX:size/IE.size, scaleY:size/IE.size});
+		IE.stage.update();
 	}
 
 	window.onresize();
