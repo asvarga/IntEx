@@ -139,7 +139,7 @@ IE.pages = {
 		buttons: [
 			{
 				text: 'Go to work',
-				next: 'work',
+				next: 'dice',
 				color: '#008800',
 				textColor: "#00FF00"
 			},
@@ -235,7 +235,65 @@ IE.pages = {
 			}
 		]
 	},
-
+	'dice': {
+		text: "You find a single die, with a note that says roll 6 or suffer.",
+		titleColor: "#FFFFFF",
+		title: ". : .: :: .:: :::",
+		font: '10px Arial',
+		color1: "#FFFFFF",
+		color2: "#000000",
+		buttonColor: "#FFFFFF",
+		buttonTextColor: "#000000",
+		buttons: [
+			{
+				text: "Roll",
+				next: 'diceRoll',
+			},
+			{
+				text: "Run",
+				next: 'diceRun',
+			}
+		]
+	},
+	'diceRun': {
+		text: "Your legs refuse to move, your arm raises against your volition, you roll the die.",
+		titleColor: "#FFFFFF",
+		title: ". : .: :: .:: :::",
+		font: '10px Arial',
+		color1: "#FFFFFF",
+		color2: "#000000",
+		buttonColor: "#FFFFFF",
+		buttonTextColor: "#000000",
+		buttons: [
+			{
+				text: "Damn It",
+				next: 'diceRoll',
+			}
+		]
+	},
+	'diceRoll': function() {
+		var text;
+		var num = Math.floor(Math.random()*6+1);
+		if (num == 6) {
+			text = "You roll a 6! You get a text reading: 'Your new God doesn't play dice.'\nLoudness. Blood. Death." 
+		} else {
+			text = "An instant before the die settles, you see that it will land on "+num+". The die immediately explodes. You are pipped to death."
+		}
+		return {
+			text: text,
+			title: ". : .: :: .:: :::",
+			font: '10px Arial',
+			textColor: "#FFFFFF",
+			color1: "#000000",
+			color2: "#FFFFFF",
+			buttons: [
+				{
+					text: "Restart",
+					next: 'home',
+				}
+			]
+		}
+	},
 }
 
 var instructions = [
