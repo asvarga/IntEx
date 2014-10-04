@@ -60,6 +60,11 @@ IE.pages = {
 					next: 'noplay',
 					color: '#FF0000',
 					textColor: "#00FF00"
+				},
+				{
+					text: 'Instructions',
+					next: 'instructions0',
+					color: '#888888'
 				}
 			]
 		}
