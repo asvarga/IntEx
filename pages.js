@@ -42,7 +42,7 @@ IE.pages = {
 			}
 		]
 	},
-	'home': function() {
+	'home': function(previous) {
 		var ret = {
 			text: 'Decision #1:',
 			font: '10px Arial',
@@ -108,8 +108,23 @@ IE.pages = {
 				textColor: "#FFFF00"
 			}
 		]
+	},
+	'?': function() {
+		return {
+			text: "This game was made by Alex Varga and Nico Adams. It was inspired by intelligenceexplosion.com. While I am not necessarily opposed to a super-intelligence replacing humanity, there are far greater sufferings than human extinction.",
+			font: '5px Arial',
+			color1: "#00FFFF",
+			color2: "#662244",
+			buttons: [
+				{
+					text: 'OK!',
+					next: IE.state.previousPageName,
+					color: '#008800',
+					textColor: "#00FF00"
+				}
+			]
+		}
 	}
-	
 }
 
 var instructions = [

@@ -55,7 +55,7 @@ function init() {
 	IE.state = {
 		homes: 0
 	}
-
+	IE.currentPage = null;
 	IE.pages = IE.pages || {};
 	IE.top.showPage('welcome');
 }
@@ -63,12 +63,20 @@ function init() {
 function makeClasses() {
 	IE.Top = function() {
 		createjs.Container.call(this);
+
+		this.pageHolder = new createjs.Container();
+		this.addChild(this.pageHolder);
+
+		this.addChild(new IE.Question());
 	}
 	IE.Top.prototype = new createjs.Container();
 	IE.Top.prototype.constructor = IE.Top;
 	IE.Top.prototype.showPage = function(pageName) {
-		this.removeAllChildren();
-		this.addChild(new IE.Page(pageName));
+		IE.state.previousPageName = IE.state.currentPageName;
+		IE.state.currentPageName = pageName;
+		this.pageHolder.removeChild(IE.currentPage);
+		IE.currentPage = new IE.Page(pageName);
+		this.pageHolder.addChild(IE.currentPage);
 		IE.stage.update();
 	}
 
@@ -79,7 +87,7 @@ function makeClasses() {
 		createjs.Container.call(this);
 
 		o = get(IE.pages, pageName, {});
-		o = isFunction(o) ? o() : o;
+		o = isFunction(o) ? o(IE.state.currentPageName) : o;
 		//var name = get(o, 'name', 'noName');
 		var color1 = get(o, 'color1', "#BFFF00");
 		var color2 = get(o, 'color2', "#0000FF");
@@ -195,6 +203,35 @@ function makeClasses() {
 	}
 	IE.Button.prototype = new createjs.Container();
 	IE.Button.prototype.constructor = IE.Button;
+
+	IE.Question = function() {
+
+		createjs.Container.call(this);
+
+		var circle = new createjs.Shape();
+		circle.graphics
+			.beginFill("#FFFFFF")
+			.beginStroke("#000000")
+			.setStrokeStyle(0.25)
+			.drawCircle(97, 3, 1.5, 1.5);
+		this.addChild(circle);
+
+		var t = new createjs.Text('?', '2px Arial', "#000000"); 
+		t.textAlign = "center";
+		t.x = 97;
+		t.y = 1.7;
+		this.addChild(t);
+
+		this.addEventListener("click", function(event) { 
+			if (IE.state.currentPageName == '?') {
+				IE.top.showPage(IE.state.previousPageName);
+			} else {
+				IE.top.showPage('?');
+			}
+		});
+	}
+	IE.Question.prototype = new createjs.Container();
+	IE.Question.prototype.constructor = IE.Question;
 }
 
 
