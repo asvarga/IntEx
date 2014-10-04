@@ -152,8 +152,8 @@ IE.pages = {
 		]
 	},
 	'sleep1': {
-		text: "You drift back to sleep. \nSeveral hours pass. \nIn that time, the first superintelligence is born",
-		font: '8px Arial',
+		text: "You drift back to sleep. \nSeveral hours pass. \n\nIn that time, the first superintelligence is born",
+		font: '6px Arial',
 		color1: "#00FFFF",
 		color2: "#662244",
 		buttons: [
@@ -216,22 +216,22 @@ IE.pages = {
 			{
 				text: "It burns",
 				next: 'sleep6',
-				color: '#008800',
-				textColor: "#00FF00"
+				color: '#FF0000',
+				textColor: "#FFFF00"
 			}
 		]
 	},
 	'sleep6': {
 		text: "Result: \nRoko's Basilisk Scenario",
 		font: '10px Arial',
-		color1: "#00FFFF",
-		color2: "#662244",
+		color1: "#FFFF00",
+		color2: "#FF7F00",
 		buttons: [
 			{
 				text: "Restart",
 				next: 'home',
-				color: '#008800',
-				textColor: "#00FF00"
+				color: '#FF0000',
+				textColor: "#FFFF00"
 			}
 		]
 	},
