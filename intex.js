@@ -1,7 +1,7 @@
 
 window.onload = function() {
 	
-	IE = {};
+	IE = (typeof IE === 'undefined') ? {} : IE;
 	
 	document.body.style.background = "#000000";
 
@@ -49,47 +49,40 @@ window.onload = function() {
 	window.onresize();
 
 	init();
-	start();
 }
 
 function init() {
-	// createjs.Ticker.setInterval(40);
-	// createjs.Ticker.addEventListener("tick", tick);
-}
+	IE.state = {
+		homes: 0
+	}
 
-function tick(event) {
-	// IE.top.tick(event);
-	// IE.stage.update();
-}
-
-function start() {
-	// IE.top.start();
+	IE.pages = IE.pages || {};
+	IE.top.showPage('welcome');
 }
 
 function makeClasses() {
 	IE.Top = function() {
 		createjs.Container.call(this);
-		this.addChild(new IE.Page());
 	}
 	IE.Top.prototype = new createjs.Container();
 	IE.Top.prototype.constructor = IE.Top;
-	IE.Top.prototype.start = function(event) {
-		
-	}
-	IE.Top.prototype.tick = function(event) {
-		var dt = event.delta/1000.0;
+	IE.Top.prototype.showPage = function(pageName) {
+		this.removeAllChildren();
+		this.addChild(new IE.Page(pageName));
+		IE.stage.update();
 	}
 
 	////
 
-	IE.Page = function(o) {
+	IE.Page = function(pageName) {
 
 		createjs.Container.call(this);
 
-		o = o || {};
-		var name = get(o, 'name', 'noName');
+		o = get(IE.pages, pageName, {});
+		o = isFunction(o) ? o() : o;
+		//var name = get(o, 'name', 'noName');
 		var color1 = get(o, 'color1', "#BFFF00");
-		var color2 = get(o, 'color2', "#0000FF");
+		var color2 = get(o, 'color2', color1);
 		var text = get(o, 'text', 'Text not found.\nUse your imagination.');
 		var font = get(o, 'font', '10px Arial');
 		var textColor = get(o, 'textColor', '#000000');
@@ -98,12 +91,8 @@ function makeClasses() {
 		var buttonFont = get(o, 'buttonFont', '3px Arial');
 		var buttons = get(o, 'buttons', [
 			{
-				text: 'Commit Suicide',
-				next: 'suicide'
-			},
-			{
-				text: 'Commit Suicide',
-				next: 'suicide'
+				text: 'Mind Own Business',
+				next: 'death'
 			}
 		]);
 
@@ -123,6 +112,13 @@ function makeClasses() {
 		t.x = 50;
 		t.y = 25-t.getMeasuredHeight()/2;
 		this.addChild(t);
+
+		var height = t.getMeasuredHeight();
+		var scale = Math.min(1, 45.0/height);
+		t.scaleX = scale;
+		t.scaleY = scale;
+		t.x = 50;
+		t.y = 25-(height*scale)/2;
 
 		this.buttonSet = new IE.ButtonSet(buttons, buttonColor, buttonTextColor, buttonFont);
 		this.buttonSet.y = 50;
@@ -174,8 +170,8 @@ function makeClasses() {
 		var text = get(o, 'text', '???');
 		var textColor = get(o, 'textColor', textColor || "#FFFFFF");
 		var color = get(o, 'color', color || "#000000");
-		var next = get(o, 'next', 'death');
 		var font = get(o, 'font', font || "8px Arial");
+		var next = get(o, 'next', 'death');
 
 		var t = new createjs.Text(text, font, textColor); 
 		//t.textAlign = "center";
@@ -192,10 +188,13 @@ function makeClasses() {
 		this.addChild(rect);
 
 		this.addChild(t);
+
+		this.addEventListener("click", function(event) { 
+			IE.top.showPage(next);
+		});
 	}
 	IE.Button.prototype = new createjs.Container();
 	IE.Button.prototype.constructor = IE.Button;
-
 }
 
 
