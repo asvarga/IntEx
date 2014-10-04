@@ -21,5 +21,13 @@ function rgb(r, g, b) {
 	return 'rgb('+r+', '+g+', '+b+')'
 }
 
+function randRGB() {
+	return rgb(
+		Math.floor(Math.random()*255), 
+		Math.floor(Math.random()*255), 
+		Math.floor(Math.random()*255)
+	);
+}
+
 
 
