@@ -73,9 +73,11 @@ function makeClasses() {
 	IE.Top = function() {
 		createjs.Container.call(this);
 
-		var back = new createjs.Shape();
-		back.graphics.beginFill(IE.color).drawRect(0, 0, 100, 100);
-		this.addChild(back);
+		IE.back = new createjs.Shape();
+		IE.back.graphics.beginFill(IE.color).drawRect(0, 0, 100, 100);
+		this.addChild(IE.back);
+
+		this.addChild(new IE.Page());
 	}
 	IE.Top.prototype = new createjs.Container();
 	IE.Top.prototype.constructor = IE.Top;
@@ -85,6 +87,38 @@ function makeClasses() {
 	IE.Top.prototype.tick = function(event) {
 		var dt = event.delta/1000.0;
 	}
+
+	IE.Page = function(o) {
+		o = o || {};
+		var name = get(o, 'name', 'noName');
+		var color = get(o, 'color', IE.color);
+		var text = get(o, 'text', 'Text not found.\nUse your imagination.');
+		var font = get(o, 'font', '10px Arial');
+		var textColor = get(o, 'textColor', '#000000');
+		var buttons = get(o, 'buttons', [{
+			text: 'Commit Suicide',
+			next: 'suicide'
+		}]);
+
+		var t = new createjs.Text(text, font, textColor); 
+		t.textAlign = "center";
+		//t.textBaseline = "middle";
+		t.lineWidth = 90;
+		t.width = 100; 
+		t.x = 50;
+		t.y = 25-t.getMeasuredHeight()/2;
+		this.addChild(t);
+
+		// blah = new createjs.Shape();
+		// blah.graphics.beginFill("#FF000080").drawRect(0, 50, 100, 50);
+		// this.addChild(blah);
+
+
+	}
+	IE.Page.prototype = new createjs.Container();
+	IE.Page.prototype.constructor = IE.Page;
+
+	
 }
 
 
