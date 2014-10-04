@@ -1,6 +1,7 @@
 
 window.onload = function() {
-	// document.body.style.background = "#FFFC7F";
+	
+	document.body.style.background = "#BFFF00";
 
 	IE = {};
 
@@ -72,7 +73,7 @@ function makeClasses() {
 		createjs.Container.call(this);
 
 		var back = new createjs.Shape();
-		back.graphics.beginFill("#1F282D").drawRect(0, 0, 100, 100);
+		back.graphics.beginFill("#BFFF00").drawRect(0, 0, 100, 100);
 		this.addChild(back);
 	}
 	IE.Top.prototype = new createjs.Container();
