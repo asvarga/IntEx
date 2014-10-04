@@ -102,19 +102,21 @@ IE.pages = {
 			}
 		]
 	},
-	'death': {
-		text: '[Insert random unfair death]',	// make text a function that returns text
-		font: '10px Arial',
-		color2: "#FF0000",
-		buttons: [
-			{
-				text: 'WhereTF am I, What is this Button',
-				next: 'home',
-				color: '#8F00FF',
-				textColor: "#FFFF00"
-			}
-		]
-	},
+	'death': function() {
+		return {
+			text: IE.randomDeath(),
+			font: '10px Arial',
+			color2: "#FF0000",
+			buttons: [
+				{
+					text: 'WhereTF am I, What is this Button',
+					next: 'home',
+					color: '#8F00FF',
+					textColor: "#FFFF00"
+				}
+			]
+		}
+	},	
 	'?': function() {
 		return {
 			text: "This game was made by Alex Varga and Nico Adams. It was inspired by intelligenceexplosion.com.\nI (Alex) am not afraid of being replaced by intelligent machines. I'm afraid of:\n1. Being replaced by unintelligent machines.\n2. Eternal enslavement.",
@@ -146,6 +148,12 @@ IE.pages = {
 			{
 				text: 'Sleep in',
 				next: 'sleep1',
+				color: '#008800',
+				textColor: "#00FF00"
+			},
+			{
+				text: 'Drink more coffee',
+				next: 'death',
 				color: '#008800',
 				textColor: "#00FF00"
 			}
@@ -321,6 +329,57 @@ for (var i=0; i<instructions.length; i++) {
 		]
 	}
 }
+
+IE.words = {
+	'noun': [
+		'wasp', 
+		'duck', 
+		'clown',
+	],
+	'nouns': [
+		'wasps', 
+		'ducks', 
+		'clowns',
+	],
+	'adjective': [
+		'enraged',
+		'flaming',
+	],
+	'verbed': [
+		'shot',
+		'crushed',
+	]
+}
+
+IE.templates = [
+	'You are {verbed} to death by {adjective} {nouns}.',
+	'A {noun} locks you up in a {noun}.',
+]
+
+IE.randomDeath = function() {
+	var temp = IE.templates[Math.floor(Math.random()*IE.templates.length)];
+	temp = isFunction(temp) ? temp() : temp;
+	return IE.fillTemplate(temp);
+}
+
+IE.fillTemplate = function(temp) {
+	temp = temp.replace(/\{([^\}]*)\}/g, IE.randomX);
+	return temp;
+}
+
+IE.randomX = function(match, x) {
+	var xs = get(IE.words, x, ['{'+x+'}']);
+	var word = xs[Math.floor(Math.random()*xs.length)];
+	word = isFunction(word) ? word() : word;
+	return word;
+}
+
+
+
+
+
+
+
 
 
 
