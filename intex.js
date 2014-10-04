@@ -43,7 +43,7 @@ window.onload = function() {
 
 		IE.size = 100;
 		IE.top.set({x:chx, y:chy, scaleX:size/IE.size, scaleY:size/IE.size});
-		IE.mask.set({x:chx, y:chy, scaleX:size/IE.size, scaleY:size/IE.size});
+		//IE.mask.set({x:chx, y:chy, scaleX:size/IE.size, scaleY:size/IE.size});
 		IE.stage.update();
 	}
 
