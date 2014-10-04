@@ -3,27 +3,33 @@ IE = (typeof IE === 'undefined') ? {} : IE;
 
 IE.pages = {
 	'welcome': {
-		text: 'Intelligence Explosion:\n\nThe Game!',
-		font: '8px Arial',
+		title: "Intelligence Explosion",
+		text: 'Welcome to the future.\nPlease select an option.',
+		font: '6px Arial',
 		color2: "#0000FF",
 		buttons: [
 			{
 				text: 'Start',
 				next: 'instructions0',
-				color: '#BBBBBB'
+				color: '#CCCCCC'
 			},
 			{
 				text: 'Instructions',
 				next: 'instructions0',
-				color: '#888888'
+				color: '#999999'
 			},
 			{
 				text: 'Help',
 				next: 'instructions0',
-				color: '#444444'
+				color: '#666666'
 			},
 			{
 				text: 'About',
+				next: 'instructions0',
+				color: '#333333'
+			},
+			{
+				text: 'Intro',
 				next: 'instructions0',
 				color: '#000000'
 			}
@@ -111,7 +117,7 @@ IE.pages = {
 	},
 	'?': function() {
 		return {
-			text: "This game was made by Alex Varga and Nico Adams. It was inspired by intelligenceexplosion.com. While I am not necessarily opposed to a super-intelligence replacing humanity, there are far greater sufferings than human extinction.",
+			text: "This game was made by Alex Varga and Nico Adams. It was inspired by intelligenceexplosion.com.\nI (Alex) am not afraid of being replaced by intelligent machines. I'm afraid of:\n1. Being replaced by unintelligent machines.\n2. Eternal enslavement.",
 			font: '5px Arial',
 			color1: "#00FFFF",
 			color2: "#662244",
@@ -128,7 +134,7 @@ IE.pages = {
 }
 
 var instructions = [
-	[8, "Instructions\n\nYou've woken up on a strange planet; the same one you've woken up on every day since you were born:"],
+	[8, "Instructions\n\nYou've woken up on a strange planet; the same one you've woken up on every day of your life:"],
 	[15, "EARTH"],
 	[8, "Earth is about to experience it's first major crisis, and not a single Earthling knows it."],
 	[8, "Well, obviously you do now."],
@@ -139,6 +145,7 @@ var instructions = [
 
 for (var i=0; i<instructions.length; i++) {
 	IE.pages["instructions"+i] = {
+		title: "Instructions",
 		text: instructions[i][1],
 		font: instructions[i][0]+'px Arial',
 		color1: (i % 2) ? "#FF7F00" : "#FFFF00",

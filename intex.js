@@ -89,8 +89,12 @@ function makeClasses() {
 		o = get(IE.pages, pageName, {});
 		o = isFunction(o) ? o(IE.state.currentPageName) : o;
 		//var name = get(o, 'name', 'noName');
+		var title = get(o, 'title', "%%%%%%%%%%%%%%%%");
+		var titleFont = get(o, 'titleFont', '8px Arial');
+		var titleColor = get(o, 'titleColor', '#000000');
 		var color1 = get(o, 'color1', "#BFFF00");
 		var color2 = get(o, 'color2', "#0000FF");
+		var color = get(o, 'color', color2);
 		var text = get(o, 'text', 'Text not found.\nUse your imagination.');
 		var font = get(o, 'font', '10px Arial');
 		var textColor = get(o, 'textColor', '#000000');
@@ -105,31 +109,42 @@ function makeClasses() {
 		]);
 
 		var rect = new createjs.Shape();
-		rect.graphics.beginFill(color1).drawRect(0, 0, 100, 50);
+		rect.graphics.beginFill(color).drawRect(0, 0, 100, 16);
 		this.addChild(rect);
 
 		var rect2 = new createjs.Shape();
-		rect2.graphics.beginFill(color2).drawRect(0, 50, 100, 50);
+		rect2.graphics.beginFill(color1).drawRect(0, 15, 100, 46);
 		this.addChild(rect2);
 
-		var t = new createjs.Text(text, font, textColor); 
+		var rect3 = new createjs.Shape();
+		rect3.graphics.beginFill(color2).drawRect(0, 60, 100, 40);
+		this.addChild(rect3);
+
+		var t = new createjs.Text(title, titleFont, titleColor); 
 		t.textAlign = "center";
 		//t.textBaseline = "middle";
 		t.lineWidth = 90;
 		t.width = 100; 
 		t.x = 50;
-		t.y = 25-t.getMeasuredHeight()/2;
+		t.y = 8-t.getMeasuredHeight()*0.6;
 		this.addChild(t);
 
-		var height = t.getMeasuredHeight();
-		var scale = Math.min(1, 45.0/height);
-		t.scaleX = scale;
-		t.scaleY = scale;
-		t.x = 50;
-		t.y = 25-(height*scale)/2;
+		var t2 = new createjs.Text(text, font, textColor); 
+		t2.textAlign = "center";
+		//t.textBaseline = "middle";
+		t2.lineWidth = 90;
+		t2.width = 100; 
+		this.addChild(t2);
+
+		var height = t2.getMeasuredHeight();
+		var scale = Math.min(1, 35.0/height);
+		t2.scaleX = scale;
+		t2.scaleY = scale;
+		t2.x = 50;
+		t2.y = 38-(height*scale)*0.5;
 
 		this.buttonSet = new IE.ButtonSet(buttons, buttonColor, buttonTextColor, buttonFont);
-		this.buttonSet.y = 50;
+		this.buttonSet.y = 60;
 		this.addChild(this.buttonSet);
 
 	}
@@ -157,12 +172,12 @@ function makeClasses() {
 			child.addChild(button);
 		}
 
-		var scale = Math.min(1, Math.min(100.0/width, 50.0/height));
+		var scale = Math.min(1, Math.min(100.0/width, 40.0/height));
 		child.scaleX = scale;
 		child.scaleY = scale;
 
 		child.x = 50-100*scale/2;
-		child.y = 25-(height*scale)/2;
+		child.y = 20-(height*scale)/2;
 	}
 	IE.ButtonSet.prototype = new createjs.Container();
 	IE.ButtonSet.prototype.constructor = IE.ButtonSet;
