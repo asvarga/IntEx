@@ -31,7 +31,7 @@ window.onload = function() {
 		var width = w.innerWidth || e.clientWidth || g.clientWidth;
 		var height = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
-		var size = Math.min(width, height)*0.96;
+		var size = Math.min(width, height);//*0.96;
 		var chx = (width-size)/2.0;
 		var chy = (height-size)/2.0;
 
