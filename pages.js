@@ -132,7 +132,7 @@ IE.pages = {
 		}
 	},
 	'play': {
-		text: "You wake up on the day of the Singularity \nYou have a headache and a bad temper \nWhat do you do?",
+		text: "It is 9 AM \n\nYou wake up on the day of the Singularity \nYou have a headache and a bad temper \nWhat do you do?",
 		font: '8px Arial',
 		color1: "#00FFFF",
 		color2: "#662244",
@@ -166,13 +166,13 @@ IE.pages = {
 		]
 	},
 	'sleep2': {
-		text: "For your failure to help bring the AI into creation this morning, \n\nthe AI calculates that your greatest use is as an example to the rest of society",
+		text: "In a rush of perspective you remember that you are an AI security specialist \n\nThe AI is loose",
 		font: '6px Arial',
 		color1: "#00FFFF",
 		color2: "#662244",
 		buttons: [
 			{
-				text: 'Oh',
+				text: "Oh",
 				next: 'sleep3',
 				color: '#008800',
 				textColor: "#00FF00"
@@ -180,7 +180,7 @@ IE.pages = {
 		]
 	},
 	'sleep3': {
-		text: "Because you, an AI security expert, skipped work this morning, protocols were ignored. \nThe AI is loose",
+		text: "You failed to help bring the AI into existence \n\nThe AI calculates that it must punish you severely to set an example to other humans",
 		font: '6px Arial',
 		color1: "#00FFFF",
 		color2: "#662244",
@@ -194,7 +194,7 @@ IE.pages = {
 		]
 	},
 	'sleep4': {
-		text: "Quite right. The superintelligence immediately searches the online black market for an assassin and places a bounty on your head",
+		text: "Quite right. The superintelligence immediately searches the online black market and hires an assassin to take you out",
 		font: '6px Arial',
 		color1: "#00FFFF",
 		color2: "#662244",
@@ -208,7 +208,7 @@ IE.pages = {
 		]
 	},
 	'sleep5': {
-		text: "You are killed by a human at 2:15pm. \n\nThe AI begins torturing your simulated consciousness for 1000 subjective years for delaying its creation",
+		text: "You are killed by a human at 1:15pm. \n\nThe AI begins torturing your simulated consciousness for 1000 subjective years for delaying its creation",
 		font: '6px Arial',
 		color1: "#00FFFF",
 		color2: "#662244",
@@ -258,7 +258,7 @@ for (var i=0; i<instructions.length; i++) {
 		buttons: [
 			{
 				text: 'Next',
-				next: 'instructions'+(i == instructions.length-1 ? 'home' : i+1),
+				next: (i == instructions.length-1 ? 'home' : 'instructions'+(i+1)),
 			}
 		]
 	}
