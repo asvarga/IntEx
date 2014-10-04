@@ -6,6 +6,8 @@ The short option better exemplifies the true unfairness a SI might operate under
 I would opt for a "shallow tree", with many possible short paths, with one chosen randomly each time.
 Most would be short, but maybe a couple could be more involved.
 
+^ I like the shallow tree idea. I was thinking we could make a decision tree that's just deep enough to
+include all the most interesting AI scenarios, but one that would still be pretty short
 
 TODO:
 
@@ -13,6 +15,12 @@ TODO:
 
 STORY IDEAS:
 
+- Paperclipper scenario
+	- AI is given inadequate safeguards
+	- Universe becomes paperclips
 - ai box scenario
 	- ai is faking being in the box
-	- 
+	- AI argument 1: "I can cure cancer" (should fail)
+	- AI argument 2: "I can make a million simulations of you and torture them / how do you know this isn't a simulation now?"
+	- (user is actually a simulation and is tortured)
+	- (shucks)
