@@ -82,7 +82,7 @@ function makeClasses() {
 		o = isFunction(o) ? o() : o;
 		//var name = get(o, 'name', 'noName');
 		var color1 = get(o, 'color1', "#BFFF00");
-		var color2 = get(o, 'color2', color1);
+		var color2 = get(o, 'color2', "#0000FF");
 		var text = get(o, 'text', 'Text not found.\nUse your imagination.');
 		var font = get(o, 'font', '10px Arial');
 		var textColor = get(o, 'textColor', '#000000');
