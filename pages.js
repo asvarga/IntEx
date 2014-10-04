@@ -51,13 +51,13 @@ IE.pages = {
 	'home': function(previous) {
 		var ret = {
 			text: 'Decision #1:',
-			font: '10px Arial',
+			font: '8px Arial',
 			color1: "#BBBBFF",
 			color2: "#000044",
 			buttons: [
 				{
 					text: 'Play',
-					next: '',
+					next: 'play',
 					color: '#00FF00',
 					textColor: "#000000"
 				},
@@ -96,7 +96,7 @@ IE.pages = {
 		buttons: [
 			{
 				text: 'Play',
-				next: '',
+				next: 'play',
 				color: '#00FF00',
 				textColor: "#000000"
 			}
@@ -130,7 +130,112 @@ IE.pages = {
 				}
 			]
 		}
-	}
+	},
+	'play': {
+		text: "You wake up on the day of the Singularity \nYou have a headache and a bad temper \nWhat do you do?",
+		font: '8px Arial',
+		color1: "#00FFFF",
+		color2: "#662244",
+		buttons: [
+			{
+				text: 'Go to work',
+				next: 'work',
+				color: '#008800',
+				textColor: "#00FF00"
+			},
+			{
+				text: 'Sleep in',
+				next: 'sleep1',
+				color: '#008800',
+				textColor: "#00FF00"
+			}
+		]
+	},
+	'sleep1': {
+		text: "You drift back to sleep. \nSeveral hours pass. \n\nIn that time, the first superintelligence is born",
+		font: '6px Arial',
+		color1: "#00FFFF",
+		color2: "#662244",
+		buttons: [
+			{
+				text: 'Cool!',
+				next: 'sleep2',
+				color: '#008800',
+				textColor: "#00FF00"
+			}
+		]
+	},
+	'sleep2': {
+		text: "For your failure to help bring the AI into creation this morning, \n\nthe AI calculates that your greatest use is as an example to the rest of society",
+		font: '6px Arial',
+		color1: "#00FFFF",
+		color2: "#662244",
+		buttons: [
+			{
+				text: 'Oh',
+				next: 'sleep3',
+				color: '#008800',
+				textColor: "#00FF00"
+			}
+		]
+	},
+	'sleep3': {
+		text: "Because you, an AI security expert, skipped work this morning, protocols were ignored. \nThe AI is loose",
+		font: '6px Arial',
+		color1: "#00FFFF",
+		color2: "#662244",
+		buttons: [
+			{
+				text: "I'll never sleep in again",
+				next: 'sleep4',
+				color: '#008800',
+				textColor: "#00FF00"
+			}
+		]
+	},
+	'sleep4': {
+		text: "Quite right. The superintelligence immediately searches the online black market for an assassin and places a bounty on your head",
+		font: '6px Arial',
+		color1: "#00FFFF",
+		color2: "#662244",
+		buttons: [
+			{
+				text: "Noooo",
+				next: 'sleep5',
+				color: '#008800',
+				textColor: "#00FF00"
+			}
+		]
+	},
+	'sleep5': {
+		text: "You are killed by a human at 2:15pm. \n\nThe AI begins torturing your simulated consciousness for 1000 subjective years for delaying its creation",
+		font: '6px Arial',
+		color1: "#00FFFF",
+		color2: "#662244",
+		buttons: [
+			{
+				text: "It burns",
+				next: 'sleep6',
+				color: '#FF0000',
+				textColor: "#FFFF00"
+			}
+		]
+	},
+	'sleep6': {
+		text: "Result: \nRoko's Basilisk Scenario",
+		font: '10px Arial',
+		color1: "#FFFF00",
+		color2: "#FF7F00",
+		buttons: [
+			{
+				text: "Restart",
+				next: 'home',
+				color: '#FF0000',
+				textColor: "#FFFF00"
+			}
+		]
+	},
+
 }
 
 var instructions = [
