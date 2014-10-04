@@ -1,15 +1,16 @@
 
 window.onload = function() {
 	
-	document.body.style.background = "#BFFF00";
-
 	IE = {};
+	
+	IE.color = "#BFFF00";
+	document.body.style.background = IE.color;
 
 	makeClasses();
 
 	IE.canvas = document.createElement("canvas");
 	IE.canvas.style.position = "fixed";
-	IE.canvas.style.background = "#FFDF00";
+	IE.canvas.style.background = IE.color;
 	//IE.canvas.style.cursor = "none";
 	document.body.appendChild(IE.canvas);
 
@@ -73,7 +74,7 @@ function makeClasses() {
 		createjs.Container.call(this);
 
 		var back = new createjs.Shape();
-		back.graphics.beginFill("#BFFF00").drawRect(0, 0, 100, 100);
+		back.graphics.beginFill(IE.color).drawRect(0, 0, 100, 100);
 		this.addChild(back);
 	}
 	IE.Top.prototype = new createjs.Container();
