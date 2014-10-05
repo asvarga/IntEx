@@ -8,6 +8,8 @@ Most would be short, but maybe a couple could be more involved.
 
 every wrong move should lead to quick death, victory should be impossible, and that fact should be made clear to the player
 
+^ I like the shallow tree idea. I was thinking we could make a decision tree that's just deep enough to
+include all the most interesting AI scenarios, but one that would still be pretty short
 
 TODO:
 
@@ -15,6 +17,12 @@ TODO:
 
 STORY IDEAS:
 
+- Paperclipper scenario
+	- AI is given inadequate safeguards
+	- Universe becomes paperclips
 - ai box scenario
 	- ai is faking being in the box
-	- 
+	- AI argument 1: "I can cure cancer" (should fail)
+	- AI argument 2: "I can make a million simulations of you and torture them / how do you know this isn't a simulation now?"
+	- (user is actually a simulation and is tortured)
+	- (shucks)
