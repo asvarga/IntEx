@@ -28,7 +28,7 @@ window.onload = function() {
 		var e = d.documentElement;
 		var g = d.getElementsByTagName('body')[0];
 		var width = w.innerWidth || e.clientWidth || g.clientWidth;
-		var height = w.innerHeight|| e.clientHeight|| g.clientHeight;
+		var height = w.innerHeight || e.clientHeight|| g.clientHeight;
 
 		var size = Math.min(width, height);//*0.96;
 		var chx = (width-size)/2.0;
@@ -36,6 +36,8 @@ window.onload = function() {
 
 		IE.canvas.style.width = width.toString()+"px";
 		IE.canvas.style.height = height.toString()+"px";
+		IE.canvas.style.top = "0px";
+		IE.canvas.style.left = "0px";
 
 		IE.canvas.width = IE.canvas.offsetWidth;
 		IE.canvas.height = IE.canvas.offsetHeight;
@@ -68,6 +70,7 @@ function makeClasses() {
 		this.addChild(this.pageHolder);
 
 		this.addChild(new IE.Question());
+		this.addChild(new IE.FullScreen());
 	}
 	IE.Top.prototype = new createjs.Container();
 	IE.Top.prototype.constructor = IE.Top;
@@ -247,6 +250,31 @@ function makeClasses() {
 	}
 	IE.Question.prototype = new createjs.Container();
 	IE.Question.prototype.constructor = IE.Question;
+
+	IE.FullScreen = function() {
+
+		createjs.Container.call(this);
+
+		var circle = new createjs.Shape();
+		circle.graphics
+			.beginFill("#FFFFFF")
+			.beginStroke("#000000")
+			.setStrokeStyle(0.25)
+			.drawCircle(3, 3, 1.5, 1.5);
+		this.addChild(circle);
+
+		var t = new createjs.Text('+', '2px Arial', "#000000"); 
+		t.textAlign = "center";
+		t.x = 3;
+		t.y = 1.7;
+		this.addChild(t);
+
+		this.addEventListener("click", function(event) { 
+			fullScreen(IE.canvas);
+		});
+	}
+	IE.FullScreen.prototype = new createjs.Container();
+	IE.FullScreen.prototype.constructor = IE.FullScreen;
 }
 
 

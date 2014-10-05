@@ -34,5 +34,24 @@ function isFunction(functionToCheck) {
 	return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
 }
 
+function fullScreen(elem) {
+	var requestMethod = 
+		elem.requestFullScreen || 
+		elem.webkitRequestFullScreen || 
+		elem.mozRequestFullScreen || 
+		elem.msRequestFullscreen;
+
+    if (requestMethod) { // Native full screen.
+    	log(requestMethod);
+        requestMethod.call(elem);
+    } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript !== null) {
+            wscript.SendKeys("{F11}");
+        }
+    }
+
+    //window.onresize();
+}
 
 
