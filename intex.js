@@ -238,6 +238,7 @@ function makeClasses() {
 
 		this.addEventListener("click", function(event) { 
 			IE.top.showPage(next);
+			document.body.style.cursor = 'default';
 		});
 		this.addEventListener("mouseover", function(event) { 
 		    document.body.style.cursor = 'pointer';
@@ -273,8 +274,8 @@ function makeClasses() {
 			} else {
 				IE.top.showPage('?');
 			}
+			document.body.style.cursor = 'default';
 		});
-
 		this.addEventListener("mouseover", function(event) { 
 		    document.body.style.cursor = 'pointer';
 		});
@@ -305,8 +306,8 @@ function makeClasses() {
 
 		this.addEventListener("click", function(event) { 
 			fullScreen(IE.canvas);
+			document.body.style.cursor = 'default';
 		});
-
 		this.addEventListener("mouseover", function(event) { 
 		    document.body.style.cursor = 'pointer';
 		});
