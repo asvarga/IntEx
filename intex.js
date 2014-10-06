@@ -14,6 +14,7 @@ window.onload = function() {
 	document.body.appendChild(IE.canvas);
 
 	IE.stage = new createjs.Stage(IE.canvas);
+	IE.stage.enableMouseOver();
 	IE.top = new IE.Top();
 	IE.stage.addChild(IE.top);
 
@@ -71,6 +72,26 @@ function makeClasses() {
 
 		this.addChild(new IE.Question());
 		this.addChild(new IE.FullScreen());
+
+		// IE.cursor = new createjs.Container();
+		// for (var i=0; i<3; i++) {
+		// 	var c = new createjs.Bitmap("assets/cursor.png");
+		// 	c.rotation = (360*i/3+22.5);
+		// 	IE.cursor.addChild(c);
+		// }
+		
+		// IE.cursor.scaleX = 0.01;
+		// IE.cursor.scaleY = IE.cursor.scaleX;
+		// this.addChild(IE.cursor);
+
+		// var this2 = this;
+		// function moveCursor() {
+		// 	var pt = this2.globalToLocal(IE.stage.mouseX, IE.stage.mouseY);
+		// 	IE.cursor.x = pt.x;
+		// 	IE.cursor.y = pt.y;
+		// 	IE.stage.update();
+		// }
+		// IE.stage.on("stagemousemove", moveCursor);
 	}
 	IE.Top.prototype = new createjs.Container();
 	IE.Top.prototype.constructor = IE.Top;
@@ -103,7 +124,7 @@ function makeClasses() {
 		var textColor = get(o, 'textColor', '#000000');
 		var buttonColor = get(o, 'buttonColor', '#000000');
 		var buttonTextColor = get(o, 'buttonTextColor', '#FFFFFF');
-		var buttonFont = get(o, 'buttonFont', '3px Arial');
+		var buttonFont = get(o, 'buttonFont', '5px Arial');
 		var buttons = get(o, 'buttons', [
 			{
 				text: 'Mind Own Business',
@@ -218,6 +239,12 @@ function makeClasses() {
 		this.addEventListener("click", function(event) { 
 			IE.top.showPage(next);
 		});
+		this.addEventListener("mouseover", function(event) { 
+		    document.body.style.cursor = 'pointer';
+		});
+		this.addEventListener("mouseout", function(event) { 
+		    document.body.style.cursor = 'default';
+		});
 	}
 	IE.Button.prototype = new createjs.Container();
 	IE.Button.prototype.constructor = IE.Button;
@@ -247,6 +274,13 @@ function makeClasses() {
 				IE.top.showPage('?');
 			}
 		});
+
+		this.addEventListener("mouseover", function(event) { 
+		    document.body.style.cursor = 'pointer';
+		});
+		this.addEventListener("mouseout", function(event) { 
+		    document.body.style.cursor = 'default';
+		});
 	}
 	IE.Question.prototype = new createjs.Container();
 	IE.Question.prototype.constructor = IE.Question;
@@ -271,6 +305,13 @@ function makeClasses() {
 
 		this.addEventListener("click", function(event) { 
 			fullScreen(IE.canvas);
+		});
+
+		this.addEventListener("mouseover", function(event) { 
+		    document.body.style.cursor = 'pointer';
+		});
+		this.addEventListener("mouseout", function(event) { 
+		    document.body.style.cursor = 'default';
 		});
 	}
 	IE.FullScreen.prototype = new createjs.Container();
